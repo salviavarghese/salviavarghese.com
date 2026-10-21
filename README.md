@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# salviavarghese.com
 
-## Getting Started
+Personal portfolio. Next.js 15 (App Router), Tailwind CSS v4, TypeScript. No CMS, no database.
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Run locally
 ```
+npm install
+npm run dev
+```
+Open http://localhost:3000.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Edit content
+Everything you read on the site is in `content/site.ts`. Components only render it.
+- Change wording, dates, stack lists, the About section: edit the strings there.
+- Add a project: add an object to the `projects` array. Give it `caseStudy` to get a `/work/<slug>` page, or `caseStudy: null` and an `external` link to send the title off-site.
+- Swap a screenshot: replace the file in `public/work/` with one of the same name, or point `image.src` at a new file and set its real `width` and `height`.
+- Add your photo: put `photo.jpg` in `public/`, then set `hero.photo` to `{ src: "/photo.jpg", alt: "Salvia Varghese" }`.
+- Lines marked `// TODO Salvia` are placeholders written from the summary only; expand them.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Design
+`DESIGN.md` holds the tokens. They are set once at the top of `app/globals.css` and exposed to Tailwind via `@theme`.
+Scroll animation is deliberately not in yet. Add GSAP/Lenis later as a client component wrapped around `<main>`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy
+Push to GitHub, import the repo on Vercel, add `salviavarghese.com` under the project's Domains tab and set the DNS records Vercel shows you at your registrar.
