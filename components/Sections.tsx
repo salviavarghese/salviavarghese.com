@@ -114,6 +114,11 @@ export function About() {
             </div>
           ))}
         </div>
+
+        <div className="how">
+          <h3>{a.howIWork.heading}</h3>
+          <div>{a.howIWork.paragraphs.map((t) => <p key={t.slice(0, 20)}>{t}</p>)}</div>
+        </div>
       </div>
     </section>
   );

@@ -7,10 +7,11 @@ import { site } from "@/content/site";
 const links = [
   { href: "/#work", label: "Work" },
   { href: "/#about", label: "About" },
+  { href: "/writing", label: "Writing" },
   { href: "/#contact", label: "Contact" },
 ];
 
-export default function Nav({ current }: { current?: "work" }) {
+export default function Nav({ current }: { current?: "work" | "writing" }) {
   const [open, setOpen] = useState(false);
   const btn = useRef<HTMLButtonElement>(null);
 
@@ -45,7 +46,7 @@ export default function Nav({ current }: { current?: "work" }) {
               <Link
                 href={l.href}
                 onClick={() => setOpen(false)}
-                aria-current={current === "work" && l.label === "Work" ? "page" : undefined}
+                aria-current={(current === "work" && l.label === "Work") || (current === "writing" && l.label === "Writing") ? "page" : undefined}
               >
                 {l.label}
               </Link>

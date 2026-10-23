@@ -47,6 +47,14 @@ export const site = {
       "Since then I've done a placement with Ara Solutions, a web agency, and kept working with them on client projects, most recently a dealership site built from scratch. On my own I've launched two catalogue sites for small businesses and restyled a property compliance product as a freelance job. I care about how a site looks as much as how it works, so I usually do the brand and the front end together.",
       "I graduate in summer 2027 and I'm looking for a graduate role in web development, in the UK or abroad.",
     ],
+    howIWork: {
+      heading: "How I work",
+      paragraphs: [
+        "Design first, then code. Before I touch a codebase I build a standalone mockup of the new look, in plain HTML and CSS, and get it approved. Only then do I apply it. On a live product that means the restyle is presentation only: same pages, same wording, same features, and nothing in the logic, data or backend changes.",
+        "Every project gets a short design system before the first page: colour tokens, two fonts with a type scale, a spacing scale, one radius, one easing. Every page is held to it. That is what stops a site drifting into a different look on every screen.",
+        "I check the work at phone and laptop widths before I call it done, and I keep a list of what a real site needs that the brief forgot: favicon, 404, link previews, a correct copyright year.",
+      ],
+    },
     facts: [
       ["Studying", "BSc Computer Science (Cyber Security), Keele University, 2024 to 2027"],
       ["Based", "Newcastle-under-Lyme, Staffordshire"],
@@ -79,8 +87,7 @@ export const projects: Project[] = [
       "Used-car dealership website built from scratch for a client of Ara Solutions, with an admin panel so the owner manages stock without touching code.",
     stack: "Next.js, Payload CMS, Neon Postgres, Vercel, Resend, GSAP",
     live: null,
-    image: null,
-    placeholder: "Screenshots to follow when the site launches",
+    image: { src: "/work/njmotors-desktop.jpg", alt: "NJ Motors homepage: dark header with red logo, headline The right car, the honest way, and a photo of a grey saloon in a car park", width: 1702, height: 832 },
     caseStudy: {
       lead: "A full website for a used-car dealership, where the owner manages stock, enquiries and page content without a developer.",
       client: "NJ Motors, through Ara Solutions",
@@ -88,15 +95,16 @@ export const projects: Project[] = [
       role: "Design, build, launch",
       stackShort: "Next.js, Payload, Neon, Vercel",
       brief:
-        "The dealership needed a site that looked like a modern showroom and that the owner could update daily: add a car, change a price, mark one sold. No developer in the loop for day-to-day changes.",
+        "A used-car dealership that needed a real website, not a listings page on someone else's platform. The owner had to be able to add a car, change a price or mark one as sold from their phone, without a developer in the loop. The site also had to look like a showroom: the client wanted an animated front end that felt premium, not a template.",
       whatIDid: [
-        "Built the site from scratch in Next.js with Payload CMS, so vehicles, enquiries and page content are all editable from an admin panel.",
-        "Vehicle listing and detail pages driven by the CMS, with images stored on Vercel Blob.",
-        "Enquiry form sending email through Resend, with the sending domain verified.",
-        "A scroll-animation layer on top of the CMS-driven pages, kept separate from the data layer.",
-        "Pre-launch audit: fixed a database schema issue in Neon, set up environment config and the Vercel deploy pipeline.",
+        "Chose the stack for the owner, not for me: Next.js for the front end and Payload CMS for the admin panel, because Payload runs inside the same app with no monthly fee and gives the owner a proper editing screen for vehicles, enquiries and page content.",
+        "Built the vehicle listing and detail pages from the CMS, with images in Vercel Blob storage and a Neon PostgreSQL database behind it.",
+        "Wired the enquiry form to Resend so leads arrive as email, which meant verifying the dealership's sending domain.",
+        "Prototyped the animated front end separately first, then took a hybrid approach: kept the pages already wired to Payload exactly as they were and added the animation layer on top, so a design change could never break the data.",
+        "Wrote the site copy to the client's exact wording rather than my own.",
+        "Ran a pre-launch audit and worked through the blockers: a database schema mismatch in Neon, creating the Blob store, environment variables for production, and the Resend domain verification.",
       ],
-      outcome: "Launching soon. Screenshots and the live link will be added here.", // TODO Salvia: update at launch
+      outcome: "Launching soon. The owner manages stock from the admin panel; the front end is animated without touching the backend. The live link will be added at launch.", // TODO Salvia: update at launch
     },
   },
   {
@@ -104,25 +112,26 @@ export const projects: Project[] = [
     title: "SupportComply",
     when: "Oct 2026",
     summary:
-      "Front-end restyle for a property compliance product for landlords. Freelance. I designed a visual mockup first, got it approved, then applied it as a reskin without touching any logic or backend.",
-    stack: "CSS-only reskin of an existing site, mockup-first process, pull request on the client's repo",
+      "Property compliance product for landlords. Freelance. Started as a front-end restyle, mockup first and applied as a CSS-only reskin; I'm now building out the rest of the product's front end the same way.",
+    stack: "Mockup-first design, CSS reskin, then new front-end work on the client's codebase",
     live: "https://supportcomply.co.uk",
-    image: { src: "/work/supportcomply-desktop.jpg", alt: "SupportComply homepage: white page, dark green logo, headline Property evidence, kept in order, with a plan panel on the right", width: 800, height: 500 },
+    image: { src: "/work/supportcomply-desktop.jpg", alt: "SupportComply homepage: white page, dark green logo, headline Property evidence, kept in order, with a plan panel on the right", width: 1600, height: 1000 },
     caseStudy: {
       lead: "A visual restyle of an existing product site, done as a reskin: same pages, wording and features, only the look changed.",
       client: "SupportComply",
       year: "2026",
-      role: "Front-end design and restyle",
-      stackShort: "CSS, existing codebase",
+      role: "Front-end design and build, ongoing",
+      stackShort: "Existing codebase, CSS first",
       brief:
-        "The product worked but looked template-made. The client wanted it to look properly designed without any risk to the logic, data or backend.",
+        "SupportComply keeps property records, evidence and day-to-day work in one place for landlords and property managers in England. The product worked, but it looked template-made, and the client did not want any risk to the logic, data or backend while it was being restyled. The job was to make it look properly designed while changing nothing about how it behaves.",
       whatIDid: [
-        "Audited every page and listed what could not change: selectors, field names, routes.",
-        "Built a standalone HTML mockup of the new look and got it approved before touching the codebase.",
-        "Applied the approved design as a CSS-only reskin, one page at a time, in a pull request on the client's repository.",
-        "Checked every page at phone and laptop widths against the mockup before handing over.",
+        "Read every page and workspace first and wrote down what could not change: selectors, IDs, form field names, routes, component names. That list became the rules for the whole job.",
+        "Wrote a small design system before any page: brand green kept, a neutral palette, two fonts with a type scale, spacing scale, one radius, one shadow, one easing.",
+        "Built the new look as a standalone HTML mockup of every page at phone and laptop width, plus a style guide, and got it approved before touching the codebase.",
+        "Applied the approved design as a CSS-only reskin in a single pull request on the client's repository: about a thousand lines changed, all presentation, no logic.",
+        "Took before and after screenshots of every page and compared them so behaviour was identical and the look matched the mockup.",
       ],
-      outcome: "Shipped as a single reviewed pull request. This mockup-first process is now how I start every front-end job.", // TODO Salvia: expand
+      outcome: "The restyle went in as one reviewed pull request with no regressions, and the client kept me on: I'm now building out the rest of the product's front end, each piece mocked up and approved before it's built. The process from this job is now how I start every front-end project.", // TODO Salvia: name what you're building next when it's public
     },
   },
   {
@@ -133,10 +142,10 @@ export const projects: Project[] = [
       "Catalogue site for a saree business, launched for the Onam 2026 collection. Customers reach the catalogue, Instagram and WhatsApp ordering in one tap.",
     stack: "HTML, CSS, JavaScript, Vercel, custom domain, DNS and SSL",
     live: "https://nilara.online",
-    image: { src: "/work/nilara-desktop.jpg", alt: "Nilara homepage: a deep red page with a gold moon logo and the headline Sarees handpicked for you", width: 800, height: 500 },
+    image: { src: "/work/nilara-desktop.jpg", alt: "Nilara homepage: a deep red page with a gold moon logo and the headline Sarees handpicked for you", width: 1600, height: 1000 },
     phones: [
-      { src: "/work/nilara-phone.jpg", alt: "Nilara homepage on a phone", width: 750, height: 1624 },
-      { src: "/work/aabhara-phone.jpg", alt: "Aabhara homepage on a phone, built on the same structure", width: 375, height: 812 },
+      { src: "/work/nilara-phone.jpg", alt: "Nilara homepage on a phone", width: 390, height: 844 },
+      { src: "/work/aabhara-phone.jpg", alt: "Aabhara homepage on a phone, built on the same structure", width: 390, height: 844 },
     ],
     caseStudy: {
       lead: "A one-page catalogue site for a saree business, built and launched for the Onam 2026 collection.",
@@ -165,8 +174,8 @@ export const projects: Project[] = [
       "Catalogue site for a jewellery business, built alongside Nilara for the same Onam season. Same one-tap structure, its own brand.",
     stack: "HTML, CSS, JavaScript, Vercel, custom domain, DNS and SSL",
     live: "https://aabhara.shop",
-    image: { src: "/work/aabhara-desktop.jpg", alt: "Aabhara homepage: cream page, gold logo, headline Adornments for Onam, catalogue cover on the right", width: 800, height: 500 },
-    phones: [{ src: "/work/aabhara-phone.jpg", alt: "Aabhara homepage on a phone", width: 375, height: 812 }],
+    image: { src: "/work/aabhara-desktop.jpg", alt: "Aabhara homepage: cream page, gold logo, headline Adornments for Onam, catalogue cover on the right", width: 1600, height: 1000 },
+    phones: [{ src: "/work/aabhara-phone.jpg", alt: "Aabhara homepage on a phone", width: 390, height: 844 }],
     caseStudy: {
       lead: "A one-page catalogue site for a jewellery business, built on the same structure as Nilara with its own brand.",
       client: "Aabhara",
@@ -174,13 +183,14 @@ export const projects: Project[] = [
       role: "Design, build, launch",
       stackShort: "HTML, CSS, JavaScript, Vercel",
       brief:
-        "Aabhara sells necklaces, earrings and sets for the Onam season and needed the same thing as Nilara: one link that gets a customer to the catalogue and to WhatsApp ordering on a phone.",
+        "Aabhara sells necklaces, earrings and sets for the Onam season, mostly through Instagram and WhatsApp. They had a 17 MB PDF catalogue and needed one link that gets a customer from a shared message to the catalogue and to ordering on a phone, fast.",
       whatIDid: [
-        "Reused the one-page structure from Nilara and gave it Aabhara's own palette, type and logo.",
-        "Open Graph tags for clean link previews on WhatsApp and Instagram.",
-        "Deployed on Vercel with a custom domain, DNS and SSL.",
+        "Reused the one-page structure that worked for Nilara and gave it Aabhara's own identity: a cream page, gold logo, serif headline, deep plum buttons. Same bones, nothing shared visually.",
+        "Put the catalogue cover on the page itself so the first screen shows the product, with two actions: view the catalogue, or download the PDF with its size stated so nobody is surprised on mobile data.",
+        "Open Graph tags so the link previews with the right image and title on WhatsApp and Instagram.",
+        "Deployed on Vercel, connected the custom domain, set up DNS and SSL, and made changes from the client's feedback after launch.",
       ],
-      outcome: "Live for the Onam 2026 collection at aabhara.shop.", // TODO Salvia: expand
+      outcome: "Live at aabhara.shop for the Onam 2026 collection. Two client sites launched in the same month on one structure, each with its own brand.", // TODO Salvia: add any numbers (visits, orders) if the client has them
     },
   },
   {
@@ -191,8 +201,8 @@ export const projects: Project[] = [
       "Brand identity and website front end for a kitchen and bathroom company, built on placement with Ara Solutions. Logo, typography, colour palette and brand guidelines, then the site.",
     stack: "Next.js, Tailwind CSS, shadcn/ui, site map, lead form, SEO",
     live: "https://smart-touch.uk",
-    image: { src: "/work/smarttouch-desktop.jpg", alt: "Smart Touch Renovations homepage: navy header, headline Kitchen and Bathroom Renovators in Peterborough and Cambridgeshire, a row of kitchen photos", width: 800, height: 500 },
-    phones: [{ src: "/work/smarttouch-phone.jpg", alt: "Smart Touch Renovations homepage on a phone", width: 375, height: 812 }],
+    image: { src: "/work/smarttouch-desktop.jpg", alt: "Smart Touch Renovations homepage: navy header, headline Kitchen and Bathroom Renovators in Peterborough and Cambridgeshire, a row of kitchen photos", width: 1600, height: 1000 },
+    phones: [{ src: "/work/smarttouch-phone.jpg", alt: "Smart Touch Renovations homepage on a phone", width: 390, height: 844 }],
     caseStudy: {
       lead: "Brand identity and website front end for a kitchen and bathroom renovation company in Peterborough.",
       client: "Smart Touch Renovations, through Ara Solutions",
@@ -200,13 +210,14 @@ export const projects: Project[] = [
       role: "Brand identity, front end",
       stackShort: "Next.js, Tailwind, shadcn/ui",
       brief:
-        "A renovation company with good work and no brand. They needed a logo, a consistent look, and a site that gets homeowners to book a free consultation.",
+        "A kitchen and bathroom renovation company in Peterborough with good work and no brand: no logo, no consistent look, and nowhere to send homeowners. They needed an identity and a site whose one job is to get a homeowner to book a free consultation. This was my first project with Ara Solutions, so I was learning the agency's way of working as I went.",
       whatIDid: [
-        "Designed the brand identity: logo, typography, colour palette and brand guidelines.",
-        "Planned the site map, the lead form and the SEO strategy.",
-        "Built the front end in Next.js with Tailwind CSS and shadcn/ui.",
+        "Designed the brand from scratch, starting with the logo, then the typography, colour palette and a short set of brand guidelines so the look holds everywhere, not just on the site.",
+        "Planned the site map, the lead form and the SEO strategy before building anything.",
+        "Built the front end in Next.js with Tailwind CSS and shadcn/ui, from briefs with feedback at regular check-ins.",
+        "Took what I learned on this build straight into GlowGuide, which I built in the same placement from the next brief.",
       ],
-      outcome: "Live at smart-touch.uk.", // TODO Salvia: expand
+      outcome: "Live at smart-touch.uk. My first client brand and front end, and the project that taught me the stack I now use everywhere.",
     },
   },
   {
@@ -214,23 +225,24 @@ export const projects: Project[] = [
     title: "GlowGuide",
     when: "2026, ongoing",
     summary:
-      "Skincare recommendation app. Started as a placement brief for a CMS-backed Next.js site; I used it to prototype a product of my own, now being rebuilt.",
+      "Skincare recommendation app for complete beginners. Six questions, two minutes, no account; it works out your skin type and builds a five-step routine. Started as a placement brief, now being rebuilt as my own product. Mockup shown, in progress.",
     stack: "Next.js, Tailwind CSS, shadcn/ui, Zod, Payload CMS, Neon Postgres",
     live: "https://glowguide-next-blue.vercel.app",
-    image: { src: "/work/glowguide-desktop.jpg", alt: "GlowGuide homepage: light page with the headline Your skin knows what it needs and two buttons", width: 800, height: 500 },
+    image: { src: "/work/glowguide-mockup.jpg", alt: "GlowGuide rebuild mockup: headline Start with your skin, not the shelf, a Start the quiz button, and a quiz step asking what bothers you most about your skin", width: 1923, height: 955 },
     caseStudy: {
-      lead: "A skincare recommendation app for people who don't know how to look after their skin.",
+      lead: "A skincare recommendation app for people who don't know how to look after their skin. Six questions, two minutes, no account.",
       client: "Own product",
       year: "2026",
       role: "Design, build",
       stackShort: "Next.js, Payload, Neon, Zod",
       brief:
-        "The placement brief was a Next.js site with a CMS and a database. Instead of a generic form I used it to prototype GlowGuide: a short quiz that builds a skin profile and recommends products.",
+        "The placement brief was a Next.js site with a CMS and a database. Instead of a generic form I used it to start a product of my own: GlowGuide, for people who don't know how to look after their skin. A short quiz builds a skin profile and recommends a routine. No brand ties, no selfie, any age.",
       whatIDid: [
-        "Built and deployed a Next.js site with shadcn/ui, Tailwind CSS and Zod validation, connected to Payload CMS and a Neon PostgreSQL database.",
-        "Worked through the deployment and configuration problems to get it live on Vercel.",
+        "Built and deployed the first version: Next.js with shadcn/ui, Tailwind CSS and Zod form validation, Payload CMS for the product data and a Neon PostgreSQL database, on Vercel.",
+        "Worked through the deployment and configuration problems to get it live, which is where most of the placement learning was.",
+        "Now rebuilding it properly, mockup first: rule-based recommendation logic in code rather than guesswork, a researched product database, a five-step routine built from Korean skincare that's priced in pounds and sold in the UK, double cleansing built in, and dermatologist-backed information behind each step. Written for complete beginners, whatever their age.",
       ],
-      outcome: "Prototype live. Being rebuilt with rule-based recommendations and a product database.", // TODO Salvia: expand
+      outcome: "First prototype live. The rebuild is in progress; the image above is the current mockup and will be replaced by the real thing.",
     },
   },
   {

@@ -219,3 +219,17 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 .phones { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 260px)); gap: var(--s4); padding: var(--s5); background: #E6DFE0; border-radius: var(--radius); }
 .phones img { width: 100%; height: auto; border-radius: var(--radius); }
 .photo-slot img, img.photo-slot { object-fit: cover; }
+
+/* writing */
+.posts { list-style: none; margin: 0; padding: 0; }
+.posts li { border-top: 1px solid var(--line); padding-block: var(--s6) var(--s7); max-width: 65ch; }
+.posts li:last-child { border-bottom: 1px solid var(--line); }
+.posts h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 600; margin: var(--s2) 0 var(--s3); }
+.posts h2 a { text-decoration: none; }
+.posts h2 a:hover { color: var(--rasp); }
+.post { padding-block: var(--s7) var(--section); max-width: calc(65ch + 2 * var(--gutter)); margin-inline: 0; }
+.post h2 { font-size: 22px; font-weight: 600; margin: var(--s7) 0 var(--s3); }
+.post p { margin-bottom: 1em; }
+.how { margin-top: var(--s9); display: grid; gap: var(--s5); }
+@media (min-width: 1024px) { .how { grid-template-columns: 1fr 1.3fr; gap: var(--s9); } }
+.how h3 { font-size: clamp(24px, 3vw, 32px); font-weight: 600; }
