@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { site, projects, type Project } from "@/content/site";
+import { site, projects, funProjects, type Project } from "@/content/site";
 
 export function Hero() {
   const { first, last, lead, photo } = site.hero;
@@ -37,16 +37,16 @@ function Frame({ p }: { p: Project }) {
   );
 }
 
-export function WorkList() {
+function ProjectList({ id, heading, note, items }: { id: string; heading: string; note: string; items: Project[] }) {
   return (
-    <section className="section" id="work">
+    <section className="section" id={id}>
       <div className="wrap">
         <div className="section-head">
-          <h2>Selected work</h2>
-          <p className="meta">2026</p>
+          <h2>{heading}</h2>
+          <p className="meta">{note}</p>
         </div>
         <ul className="work">
-          {projects.map((p) => {
+          {items.map((p) => {
             const href = p.external ?? (p.caseStudy ? `/work/${p.slug}` : p.live ?? "#");
             const ext = !!p.external;
             return (
@@ -72,6 +72,14 @@ export function WorkList() {
       </div>
     </section>
   );
+}
+
+export function WorkList() {
+  return <ProjectList id="work" heading="Selected work" note="2026" items={projects} />;
+}
+
+export function FunList() {
+  return <ProjectList id="fun" heading="For fun" note="Things I build for myself" items={funProjects} />;
 }
 
 export function About() {

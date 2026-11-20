@@ -12,6 +12,9 @@ export type Project = {
   image: { src: string; alt: string; width: number; height: number } | null;
   placeholder?: string; // shown in the frame when image is null
   phones?: { src: string; alt: string; width: number; height: number }[];
+  heroImage?: { src: string; alt: string; width: number; height: number }; // case-study hero if different from the card image
+  gallery?: { src: string; alt: string; width: number; height: number; caption: string }[];
+  sections?: { heading: string; body: string[] }[]; // extra case-study sections after Outcome
   caseStudy: {
     lead: string;
     client: string;
@@ -45,7 +48,7 @@ export const site = {
     lead: "I didn't start in tech. I studied psychology for two years, then switched to Computer Science in 2024 because I wanted to build things instead of reading about them.",
     paragraphs: [
       "Since then I've done a placement with Ara Solutions, a web agency, and kept working with them on client projects, most recently a dealership site built from scratch. On my own I've launched two catalogue sites for small businesses and restyled a property compliance product as a freelance job. I care about how a site looks as much as how it works, so I usually do the brand and the front end together.",
-      "I graduate in summer 2027 and I'm looking for a graduate role in web development, in the UK or abroad.",
+      "Outside client work I build things for myself, most recently a native Mac app that runs my whole day. I graduate in summer 2027 and I'm looking for a graduate role in web development, in the UK or abroad.",
     ],
     howIWork: {
       heading: "How I work",
@@ -260,9 +263,87 @@ export const projects: Project[] = [
   },
 ];
 
-export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
+export const funProjects: Project[] = [
+  {
+    slug: "trunkberry",
+    title: "Trunkberry",
+    when: "Nov 2026, in daily use",
+    summary:
+      "A native Mac app that keeps my whole life in one place: to-dos, deadlines, uni grades, focus sessions, cycle and money. Full retro pixel, pink, with a baby elephant who eats the fruit you earn by getting things done.",
+    stack: "Swift, SwiftUI, Xcode, built with Claude Code. Mac now, iPhone later.",
+    live: null,
+    image: { src: "/work/trunkberry-card.jpg", alt: "Trunkberry dashboard: a pixel-art sunset forest with a baby elephant in the middle, a speech bubble reading One small thing at a time, fruit counts underneath and the top of the to-do panel", width: 1695, height: 1059 },
+    heroImage: { src: "/work/trunkberry-forest.jpg", alt: "The full Trunkberry forest: sunset bands, small trees and flowers, and the elephant in the middle", width: 2949, height: 625 },
+    gallery: [
+      { src: "/work/trunkberry-grew.jpg", alt: "Trunkberry focus log panel showing a tree for each folder, fruit eaten, counters of tasks done, and the four fruit sizes a stopwatch session can earn", width: 1460, height: 1109, caption: "What you grew: one tree per folder, fruit for finished sessions, and what a session earns." },
+    ],
+    caseStudy: {
+      lead: "A native Mac app that keeps everything I need in one place, straightforward enough to actually open every day. Built for me first; the plan is to publish it.",
+      client: "Own project",
+      year: "2026",
+      role: "Design, pixel art, build",
+      stackShort: "Swift, SwiftUI, Xcode",
+      brief:
+        "I had my to-dos in one app, deadlines in another, grades in a spreadsheet, my cycle in a third app and money nowhere. Nothing stuck. I wanted one window with all of it, in a look I'd want to look at, and a reason to come back each day that wasn't guilt. So: a retro pixel app, pink, with a baby elephant who gets fed when I finish things.",
+      whatIDid: [
+        "Designed the whole thing as pixel art first: a sunset forest for the dashboard, a palette of pinks and creams, a pixel typeface, chunky bordered panels, and no sound. The elephant is called Berry by default and can be renamed.",
+        "Built it as a native Mac app in Swift and SwiftUI with Xcode, using Claude Code alongside, with keyboard shortcuts for every section (⌘1 to ⌘5).",
+        "Wrote the reward loop: finish a task or a focus session and the elephant eats a fruit; each folder (University, Work, Home, Selfcare, General) has its own fruit and its own tree that grows with time spent on it. A streak counts the days you show up.",
+        "Built five sections that each do one job properly: Dashboard, Uni, Cycle, Focus log and Finance. Every section is described below.",
+        "Drew and animated the elephant and the trees. They move, but they're not where I want them yet; it's the part I keep coming back to.",
+      ],
+      outcome: "Running on my Mac and used every day since mid-November. Next: finish the animations, then an iPhone version that syncs, then the App Store.",
+    },
+    sections: [
+      {
+        heading: "Dashboard",
+        body: [
+          "The home screen. A heads-up strip at the top lists anything due in the next few days. Below it is the forest: Berry in the middle, the trees you've grown, the day's streak, and a one-line message. Under the forest, a count of each fruit you've earned.",
+          "Then two panels side by side. To-do, filtered by folder, with tasks that roll over if you didn't finish them yesterday. Deadlines, filtered by folder (Work, University, Subscriptions, Payments, General, or your own), each with a due date and a chip that says tomorrow, in 2d, in 3w. You can add folders to either. A Focus button starts a stopwatch from anywhere.",
+        ],
+      },
+      {
+        heading: "Focus log",
+        body: [
+          "Start a stopwatch, pick a folder and a project or topic, work. Stop it after 15 minutes or more and the session is logged with its real length, grows that folder's tree, counts for the streak and earns one fruit of that folder's type. Under 15 minutes isn't logged. Longer sessions earn bigger fruit: small from 15 minutes, medium from 30, large from 60, extra large from 120.",
+          "The log shows hours this week, a bar per week for the last eight, totals by folder and by project, every tree and how long it takes to grow, the fruit eaten, and counters of what you've finished: tasks, sessions, deadlines by folder.",
+        ],
+      },
+      {
+        heading: "Uni",
+        body: [
+          "Deadlines with the module they belong to and the percentage of the grade they're worth. A module list by year with each module's code, credits, final mark and attempt. A credit-weighted degree average that uses the course's own year weightings and leaves out years with no marks yet.",
+          "The part I use most is the calculator: pick the year, and it tells you the average you need across the remaining modules for a First, a 2:1 and a 2:2.",
+        ],
+      },
+      {
+        heading: "Cycle",
+        body: [
+          "Days since the last period, the current cycle day and phase, and estimates for the next period, ovulation and the fertile window, with the honest version too: the range ovulation could actually fall in. A calendar where you tap a day to log or remove a period day, add a heart, or log a positive LH test. Past cycles with their lengths, the average, shortest and longest, and a note that estimates use the last six cycles.",
+          "A fixed banner says what it is and isn't: estimates from dates are not reliable enough for contraception or to confirm ovulation.",
+        ],
+      },
+      {
+        heading: "Finance",
+        body: [
+          "This section locks. You unlock it with a passcode or Touch ID, and it locks again when you leave it, after a few idle minutes, or when you switch to another app. It never stores card numbers; the add-a-card form says so.",
+          "Six tabs. Overview: net position (savings minus what you owe), split into debts, overdrafts and cards, with a line over time. Debts: add a debt or overdraft with a starting balance, log payments, see the percentage paid off, and keep a schedule of upcoming instalments with dates. Cards: nickname, balance and limit, with a bar showing how much of the limit is used. Savings: pots with a goal, an optional stretch goal, a note, add and take, and a history. Spending: log an amount against a category, see top categories, a weekly chart and every entry for the month. Budget: a monthly limit per category against expected income, with spent and left on each.",
+        ],
+      },
+      {
+        heading: "What was hard",
+        body: [
+          "The animations. The elephant and the trees move, and pixel animation at this size is unforgiving: a frame that's one pixel off reads as a glitch. They're good enough to ship to myself, not good enough to publish, so that's the current work.",
+          "The other hard part was restraint. It's easy to keep adding sections. Every one of the five earns its place by doing one thing I actually check daily.",
+        ],
+      },
+    ],
+  },
+];
+
+export const getProject = (slug: string) => [...projects, ...funProjects].find((p) => p.slug === slug);
 export const nextProject = (slug: string) => {
-  const withCase = projects.filter((p) => p.caseStudy);
+  const withCase = [...projects, ...funProjects].filter((p) => p.caseStudy);
   const i = withCase.findIndex((p) => p.slug === slug);
   return withCase[(i + 1) % withCase.length];
 };

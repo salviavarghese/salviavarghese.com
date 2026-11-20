@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import { Contact, Footer } from "@/components/Sections";
-import { projects, getProject, nextProject } from "@/content/site";
+import { projects, funProjects, getProject, nextProject } from "@/content/site";
 
 type Params = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return projects.filter((p) => p.caseStudy).map((p) => ({ slug: p.slug }));
+  return [...projects, ...funProjects].filter((p) => p.caseStudy).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
@@ -43,9 +44,9 @@ export default async function CaseStudy({ params }: Params) {
         </div>
 
         <div className="wrap">
-          {p.image ? (
+          {(p.heroImage ?? p.image) ? (
             <div className="case-hero">
-              <Image src={p.image.src} alt={p.image.alt} width={p.image.width} height={p.image.height} sizes="100vw" priority />
+              <Image src={(p.heroImage ?? p.image)!.src} alt={(p.heroImage ?? p.image)!.alt} width={(p.heroImage ?? p.image)!.width} height={(p.heroImage ?? p.image)!.height} sizes="100vw" priority />
             </div>
           ) : (
             <div className="frame text" style={{ aspectRatio: "16 / 9", display: "grid", placeItems: "center", padding: "var(--s6)", background: "#E6DFE0", borderRadius: "var(--radius)" }}>
@@ -61,7 +62,24 @@ export default async function CaseStudy({ params }: Params) {
           <div><ul>{c.whatIDid.map((t) => <li key={t.slice(0, 24)}>{t}</li>)}</ul></div>
           <h2>Outcome</h2>
           <div><p>{c.outcome}</p></div>
+          {p.sections?.map((sec) => (
+            <Fragment key={sec.heading}>
+              <h2>{sec.heading}</h2>
+              <div>{sec.body.map((t) => <p key={t.slice(0, 24)}>{t}</p>)}</div>
+            </Fragment>
+          ))}
         </div>
+
+        {p.gallery && p.gallery.length > 0 && (
+          <div className="wrap gallery">
+            {p.gallery.map((g) => (
+              <figure key={g.src}>
+                <div className="frame"><Image src={g.src} alt={g.alt} width={g.width} height={g.height} sizes="(min-width: 1024px) 60vw, 100vw" /></div>
+                <figcaption className="meta">{g.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
 
         {p.phones && p.phones.length > 0 && (
           <div className="wrap">
