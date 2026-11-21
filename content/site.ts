@@ -8,6 +8,7 @@ export type Project = {
   summary: string;
   stack: string;
   live: string | null;
+  liveNote?: string; // shown in place of the live link when live is null (e.g. "Launching soon")
   external?: string; // when the title should link off-site instead of to a case study
   image: { src: string; alt: string; width: number; height: number } | null;
   placeholder?: string; // shown in the frame when image is null
@@ -113,29 +114,49 @@ export const projects: Project[] = [
   {
     slug: "supportcomply",
     title: "SupportComply",
-    when: "Oct 2026",
+    when: "Oct 2026 to now",
     summary:
-      "Property compliance product for landlords. Freelance. Started as a front-end restyle, mockup first and applied as a CSS-only reskin; I'm now building out the rest of the product's front end the same way.",
-    stack: "Mockup-first design, CSS reskin, then new front-end work on the client's codebase",
-    live: "https://supportcomply.co.uk",
+      "A compliance product for landlords and property managers. Freelance. Started as a front-end restyle; I'm now the developer taking it from a working prototype to a launched product: design, build, staging, payments, backups and the release itself.",
+    stack: "Next.js, Supabase (Postgres, auth, edge functions), Stripe subscriptions, Vercel, Cloudflare R2, Resend, Twilio, Sentry, UptimeRobot, Figma",
+    live: null,
+    liveNote: "Launching soon",
     image: { src: "/work/supportcomply-desktop.jpg", alt: "SupportComply homepage: white page, dark green logo, headline Property evidence, kept in order, with a plan panel on the right", width: 1600, height: 1000 },
     caseStudy: {
-      lead: "A visual restyle of an existing product site, done as a reskin: same pages, wording and features, only the look changed.",
+      lead: "SupportComply keeps property records, evidence and day-to-day work in one place for landlords and property managers in England. I joined to restyle it and stayed to launch it.",
       client: "SupportComply",
       year: "2026",
-      role: "Front-end design and build, ongoing",
-      stackShort: "Existing codebase, CSS first",
+      role: "Design, front end, launch engineering",
+      stackShort: "Next.js, Supabase, Stripe, Vercel",
       brief:
-        "SupportComply keeps property records, evidence and day-to-day work in one place for landlords and property managers in England. The product worked, but it looked template-made, and the client did not want any risk to the logic, data or backend while it was being restyled. The job was to make it look properly designed while changing nothing about how it behaves.",
+        "The product existed and worked, but it looked template-made and it had only ever run as one live environment with no way to test changes safely, no payments, no sign-up, no backups and no monitoring. The owner wanted it to look designed, then wanted it ready for paying customers by a fixed date in November. The job became: restyle it without breaking it, then build everything a real product needs around it and run the release.",
       whatIDid: [
-        "Read every page and workspace first and wrote down what could not change: selectors, IDs, form field names, routes, component names. That list became the rules for the whole job.",
-        "Wrote a small design system before any page: brand green kept, a neutral palette, two fonts with a type scale, spacing scale, one radius, one shadow, one easing.",
-        "Built the new look as a standalone HTML mockup of every page at phone and laptop width, plus a style guide, and got it approved before touching the codebase.",
-        "Applied the approved design as a CSS-only reskin in a single pull request on the client's repository: about a thousand lines changed, all presentation, no logic.",
-        "Took before and after screenshots of every page and compared them so behaviour was identical and the look matched the mockup.",
+        "Restyle first, as a reskin: read every page and listed what could not change, built a standalone mockup of the new look and got it approved, then applied it as a single CSS-only pull request on the client's repository with no changes to logic or backend.",
+        "Wrote a launch plan the owner and I could both follow: every step with a check to tick, a separate list of what I needed from him and when, and a day-by-day schedule. Kept it current as things slipped.",
+        "Designed every launch screen in Figma at phone and desktop width from a shared design system, exported each one before building it, and ran a five-second test on the new homepage.",
+        "Set up a proper staging environment so nothing is tested against live: a separate database project, preview deployments on their own branch, and a rule that live only changes on release day.",
+        "Built self sign-up with a bot check, Stripe subscriptions with four plans and a 30-day card-up-front trial, transactional email, and the tenant-facing screens.",
+        "Put the operations in place a product needs on day one: off-site file backups, a backup-and-restore practice run, error tracking, uptime monitoring, a scheduled data-deletion job, and a release sheet listing every setting live needs by name, never by value.",
+        "Ran a tester programme ahead of launch and set the go/no-go with the owner, then the release.",
       ],
-      outcome: "The restyle went in as one reviewed pull request with no regressions, and the client kept me on: I'm now building out the rest of the product's front end, each piece mocked up and approved before it's built. The process from this job is now how I start every front-end project.", // TODO Salvia: name what you're building next when it's public
+      outcome: "Launching to customers now, after about six weeks from restyle to release. The link goes here the day it's live.", // TODO Salvia: add the URL and the date it went live
     },
+    sections: [
+      {
+        heading: "What it will be at launch",
+        body: [
+          "A landlord or property manager signs up, picks a plan and starts a 30-day trial with a card on file. Inside, their properties, documents and evidence live in one workspace, with day-to-day operations and checklists on the higher plans. Tenants get their own screens. Billing runs through Stripe; email through Resend; files are backed up off-site; errors and downtime are watched automatically.",
+          "Four plans from Basic to Max, priced per portfolio, UK customers only. Early testers get full access before launch and a discount after it.",
+        ],
+      },
+      {
+        heading: "How I worked",
+        body: [
+          "Everything mocked up and approved before it was built, the same as the restyle. Every build task went through the same routine in Claude Code: plan, test-first implementation, code review, build fix, plus a security review for anything touching sign-in, payments, permissions, files or personal data.",
+          "Rules I set for myself and kept: secrets never go into Git, a chat or a screenshot; live is never restored from a backup by hand; nothing deploys to live except on release day. Reading from live for a schema pull is fine; writing to it is not.",
+          "Most of the hard part wasn't code. It was keeping a non-technical owner moving on the things only he could do (company registration, terms and privacy policy, payment provider verification, a developer account) while I built around the gaps, with a fallback decided in advance for each one: if the terms were late, launch with sign-ups closed; if the page-per-plan answer was late, every plan gets every page.",
+        ],
+      },
+    ],
   },
   {
     slug: "nilara",

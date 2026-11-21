@@ -60,9 +60,11 @@ function ProjectList({ id, heading, note, items }: { id: string; heading: string
                   <figcaption>
                     <p className="meta">{p.summary}</p>
                     <p className="meta muted">{p.stack}</p>
-                    {p.live && (
+                    {p.live ? (
                       <p className="meta"><a href={p.live}>{p.live.replace(/^https?:\/\//, "")}</a></p>
-                    )}
+                    ) : p.liveNote ? (
+                      <p className="meta">{p.liveNote}</p>
+                    ) : null}
                   </figcaption>
                 </figure>
               </li>

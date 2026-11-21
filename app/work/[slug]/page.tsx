@@ -39,7 +39,7 @@ export default async function CaseStudy({ params }: Params) {
             <div><dt>Year</dt><dd>{c.year}</dd></div>
             <div><dt>Role</dt><dd>{c.role}</dd></div>
             <div><dt>Stack</dt><dd>{c.stackShort}</dd></div>
-            <div><dt>Live</dt><dd>{p.live ? <a href={p.live}>{p.live.replace(/^https?:\/\//, "")}</a> : "Not yet"}</dd></div>
+            <div><dt>Live</dt><dd>{p.live ? <a href={p.live}>{p.live.replace(/^https?:\/\//, "")}</a> : (p.liveNote ?? "Not yet")}</dd></div>
           </dl>
         </div>
 

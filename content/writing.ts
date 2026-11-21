@@ -32,7 +32,7 @@ export const posts: Post[] = [
       "Before opening the pull request I screenshotted every page again at every width and put them next to the before shots and the mockup. Behaviour had to be identical. Look had to match the mockup. If either failed, it wasn't done.",
       "## What I'd tell someone doing this for the first time",
       "Don't start in the codebase. Start by reading it and listing what you can't touch. Write the design system before the first page, even if it's a page long. Build the mockup somewhere it can't break anything, and don't open the real files until someone has said yes to it. Keep the change as small as gets the result. And take the before screenshots before you change anything, because you will want them.",
-      "The client kept me on after the restyle, and I'm now building out the rest of SupportComply's front end the same way: each piece mocked up, approved, then built. I used the same process a week later to build my own site, and I'm using it on a dealership site for another client. It takes a day longer at the start and saves a week at the end.",
+      "The client kept me on after the restyle, and I'm now taking SupportComply through to launch the same way: each screen mocked up, approved, then built, with staging, payments and backups around it. I used the same process a week later to build my own site, and I'm using it on a dealership site for another client. It takes a day longer at the start and saves a week at the end.",
     ],
   },
 ];
