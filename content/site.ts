@@ -284,7 +284,7 @@ export const funProjects: Project[] = [
       role: "Design, pixel art, build",
       stackShort: "Swift, SwiftUI, Xcode",
       brief:
-        "I had my to-dos in one app, deadlines in another, grades in a spreadsheet, my cycle in a third app and money nowhere. Nothing stuck. I wanted one window with all of it, in a look I'd want to look at, and a reason to come back each day that wasn't guilt. So: a retro pixel app, pink, with a baby elephant who gets fed when I finish things.",
+        "I had my to-dos in one app, deadlines in another, grades in a spreadsheet, my cycle in a third app and money nowhere. Nothing stuck. I wanted one window with all of it, in a look I'd want to look at, and a reason to come back each day that wasn't guilt. I also wanted the personal parts, my cycle and my money, kept on my own machine rather than in someone else's app. So: a retro pixel app, pink, with a baby elephant who gets fed when I finish things.",
       whatIDid: [
         "Designed the whole thing as pixel art first: a sunset forest for the dashboard, a palette of pinks and creams, a pixel typeface, chunky bordered panels, and no sound. The elephant is called Berry by default and can be renamed.",
         "Built it as a native Mac app in Swift and SwiftUI with Xcode, using Claude Code alongside, with keyboard shortcuts for every section (⌘1 to ⌘5).",
@@ -319,8 +319,9 @@ export const funProjects: Project[] = [
       {
         heading: "Cycle",
         body: [
-          "Days since the last period, the current cycle day and phase, and estimates for the next period, ovulation and the fertile window, with the honest version too: the range ovulation could actually fall in. A calendar where you tap a day to log or remove a period day, add a heart, or log a positive LH test. Past cycles with their lengths, the average, shortest and longest, and a note that estimates use the last six cycles.",
-          "A fixed banner says what it is and isn't: estimates from dates are not reliable enough for contraception or to confirm ovulation.",
+          "I built this section for two reasons. Period-tracking apps have been caught sharing users' data with advertisers, and I didn't want mine anywhere but my own Mac. And every app I'd used assumed a textbook 28-day cycle, which mine is nothing like, so their predictions were always wrong.",
+          "So the estimates here come from my own history: the app averages the last six cycles and predicts the next period, ovulation and the fertile window from that, not from a fixed number. Because long cycles vary more, it also shows the honest version: the full range ovulation could actually fall in, not just a single date.",
+          "The screen shows days since the last period, the current cycle day and phase, the estimates, and every past cycle with its length, average, shortest and longest. A calendar lets you tap a day to log or remove a period day, add a heart, or log a positive LH test. A fixed banner says what it is and isn't: estimates from dates are not reliable enough for contraception or to confirm ovulation.",
         ],
       },
       {
