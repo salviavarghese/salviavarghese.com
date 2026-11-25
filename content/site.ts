@@ -120,7 +120,7 @@ export const projects: Project[] = [
     stack: "Next.js, Supabase (Postgres, auth, edge functions), Stripe subscriptions, Vercel, Cloudflare R2, Resend, Twilio, Sentry, UptimeRobot, Figma",
     live: null,
     liveNote: "Launching soon",
-    image: { src: "/work/supportcomply-desktop.jpg", alt: "SupportComply homepage: white page, dark green logo, headline Property evidence, kept in order, with a plan panel on the right", width: 1600, height: 1000 },
+    image: { src: "/work/supportcomply-desktop.jpg", alt: "SupportComply new homepage: dark green page, headline See what is due across every property, and an overview panel showing properties, records due soon and overdue", width: 2936, height: 1835 }, // TODO Salvia: replace with a real screenshot of the launch front end
     caseStudy: {
       lead: "SupportComply keeps property records, evidence and day-to-day work in one place for landlords and property managers in England. I joined to restyle it and stayed to launch it.",
       client: "SupportComply",
@@ -245,31 +245,6 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "glowguide",
-    title: "GlowGuide",
-    when: "2026, ongoing",
-    summary:
-      "Skincare recommendation app for complete beginners. Six questions, two minutes, no account; it works out your skin type and builds a five-step routine. Started as a placement brief, now being rebuilt as my own product. Mockup shown, in progress.",
-    stack: "Next.js, Tailwind CSS, shadcn/ui, Zod, Payload CMS, Neon Postgres",
-    live: "https://glowguide-next-blue.vercel.app",
-    image: { src: "/work/glowguide-mockup.jpg", alt: "GlowGuide rebuild mockup: headline Start with your skin, not the shelf, a Start the quiz button, and a quiz step asking what bothers you most about your skin", width: 1923, height: 955 },
-    caseStudy: {
-      lead: "A skincare recommendation app for people who don't know how to look after their skin. Six questions, two minutes, no account.",
-      client: "Own product",
-      year: "2026",
-      role: "Design, build",
-      stackShort: "Next.js, Payload, Neon, Zod",
-      brief:
-        "The placement brief was a Next.js site with a CMS and a database. Instead of a generic form I used it to start a product of my own: GlowGuide, for people who don't know how to look after their skin. A short quiz builds a skin profile and recommends a routine. No brand ties, no selfie, any age.",
-      whatIDid: [
-        "Built and deployed the first version: Next.js with shadcn/ui, Tailwind CSS and Zod form validation, Payload CMS for the product data and a Neon PostgreSQL database, on Vercel.",
-        "Worked through the deployment and configuration problems to get it live, which is where most of the placement learning was.",
-        "Now rebuilding it properly, mockup first: rule-based recommendation logic in code rather than guesswork, a researched product database, a five-step routine built from Korean skincare that's priced in pounds and sold in the UK, double cleansing built in, and dermatologist-backed information behind each step. Written for complete beginners, whatever their age.",
-      ],
-      outcome: "First prototype live. The rebuild is in progress; the image above is the current mockup and will be replaced by the real thing.",
-    },
-  },
-  {
     slug: "api-access-control-tester",
     title: "API access control tester",
     when: "Sep 2026 to May 2027",
@@ -353,6 +328,16 @@ export const funProjects: Project[] = [
         ],
       },
       {
+        heading: "What's next",
+        body: [
+          "I keep a running list of ideas and bugs for Trunkberry and build from it in order. One rule runs through all of it: nothing in the app is allowed to make you feel bad. Missed routines reset quietly, a stopped timer gets no streak credit and no comment, and Berry's mood never depends on a number.",
+          "The big change is a flower garden instead of fruit trees. Each finished task or focus session grows one flower, with a different flower for each folder, so a busy folder gets more flowers rather than a bigger tree and a quiet one still looks lovely. Salvia is the signature flower. Flowers get faces that go from bud to full bloom, and a later update lets you arrange the garden yourself. Still to decide: what Berry eats once the fruit trees go.",
+          "Sections to add: a daily selfcare box on the dashboard for routines that reset themselves each morning (skincare, oil pulling) so they never clutter the to-do list; a locked journal for mood and small notes through the day, sharing the Finance lock, with a mood calendar to read alongside the cycle; a money-owed-to-you tracker inside Finance; and a wishlist with prices and links, manual target prices first, with Berry mentioning sale seasons in passing rather than the app scraping shops.",
+          "Smaller ones: custom folders with a colour picked from a full colour wheel; adding or editing a focus session after the fact for the times I forget to press start; Berry mentioning things in passing instead of popping up; and a run of layout fixes so the forest panel never overlaps at narrow window sizes.",
+          "For a public version: sections you switch on individually, so the app suits different lives without getting crowded, and possibly an opt-in calorie tracker built around logging consistently rather than hitting a total. Then iPhone sync, and the App Store.",
+        ],
+      },
+      {
         heading: "What was hard",
         body: [
           "The animations. The elephant and the trees move, and pixel animation at this size is unforgiving: a frame that's one pixel off reads as a glitch. They're good enough to ship to myself, not good enough to publish, so that's the current work.",
@@ -360,6 +345,32 @@ export const funProjects: Project[] = [
         ],
       },
     ],
+  },
+  {
+    slug: "glowguide",
+    title: "GlowGuide",
+    when: "2026, in development",
+    summary:
+      "Skincare recommendation app for complete beginners. Six questions, two minutes, no account; it works out your skin type and builds a five-step routine. Started as a placement brief, now being rebuilt as my own product. Early mockup shown; the rebuild is still at the start.",
+    stack: "Next.js, Tailwind CSS, shadcn/ui, Zod, Payload CMS, Neon Postgres",
+    live: null,
+    liveNote: "In development",
+    image: { src: "/work/glowguide-mockup.jpg", alt: "GlowGuide rebuild mockup: headline Start with your skin, not the shelf, a Start the quiz button, and a quiz step asking what bothers you most about your skin", width: 1923, height: 955 },
+    caseStudy: {
+      lead: "A skincare recommendation app for people who don't know how to look after their skin. Six questions, two minutes, no account.",
+      client: "Own product",
+      year: "2026",
+      role: "Design, build",
+      stackShort: "Next.js, Payload, Neon, Zod",
+      brief:
+        "The placement brief was a Next.js site with a CMS and a database. Instead of a generic form I used it to start a product of my own: GlowGuide, for people who don't know how to look after their skin. A short quiz builds a skin profile and recommends a routine. No brand ties, no selfie, any age.",
+      whatIDid: [
+        "Built and deployed the first version: Next.js with shadcn/ui, Tailwind CSS and Zod form validation, Payload CMS for the product data and a Neon PostgreSQL database, on Vercel.",
+        "Worked through the deployment and configuration problems to get it live, which is where most of the placement learning was.",
+        "Now rebuilding it properly, mockup first: rule-based recommendation logic in code rather than guesswork, a researched product database, a five-step routine built from Korean skincare that's priced in pounds and sold in the UK, double cleansing built in, and dermatologist-backed information behind each step. Written for complete beginners, whatever their age.",
+      ],
+      outcome: "In development. The image above is the current mockup; the rebuild is at an early stage and there is no public link yet.",
+    },
   },
 ];
 

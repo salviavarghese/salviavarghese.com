@@ -3,7 +3,7 @@ import Link from "next/link";
 import { site, projects, funProjects, type Project } from "@/content/site";
 
 export function Hero() {
-  const { first, last, lead, photo } = site.hero;
+  const { first, last, lead } = site.hero;
   return (
     <section className="hero wrap">
       <h1 className="hero-name" aria-label={site.name}>
@@ -12,11 +12,6 @@ export function Hero() {
       </h1>
       <div className="hero-foot">
         <p className="lead">{lead}</p>
-        {photo ? (
-          <Image className="photo-slot" src={photo.src} alt={photo.alt} width={120} height={120} style={{ objectFit: "cover" }} />
-        ) : (
-          <div className="photo-slot" aria-hidden="true" />
-        )}
       </div>
     </section>
   );
